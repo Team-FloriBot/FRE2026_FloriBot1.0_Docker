@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
     libusb-1.0-0-dev \
+    ros-jazzy-rmw-cyclonedds-cpp \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
