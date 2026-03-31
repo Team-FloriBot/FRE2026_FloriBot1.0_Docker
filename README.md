@@ -19,14 +19,14 @@ Die ROS-Pakete liegen in separaten Repositories und werden hier eingebunden.
 ---
 
 ## Repository-Struktur
-FRE2026_FloriBot1.0_Docker/
-├── repos/
-│ ├── FloriBot1.0_ROS2_Jazzy_Base/
-│ └── Webteleop_ROS2_Jazzy_V1/
-├── base/
-├── webteleop/
-├── compose/
-├── scripts/
+FRE2026_FloriBot1.0_Docker/<br>
+├── repos/<br>
+│ ├── FloriBot1.0_ROS2_Jazzy_Base/<br>
+│ └── Webteleop_ROS2_Jazzy_V1/<br>
+├── base/<br>
+├── webteleop/<br>
+├── compose/<br>
+├── scripts/<br>
 └── README.md
 
 
