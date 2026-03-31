@@ -1,0 +1,9 @@
+.git
+.gitignore
+README.md
+build
+install
+log
+.vscode
+__pycache__
+*.pyc
