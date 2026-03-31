@@ -56,14 +56,14 @@ oder:
 
 cd compose
 docker compose build
-Start
+<b>Start</b>
 ./scripts/up.sh
 
 oder:
 
 cd compose
 docker compose up
-Stop
+<b>Stop</b>
 ./scripts/down.sh
-Logs
+<b>Logs</b>
 ./scripts/logs.sh
