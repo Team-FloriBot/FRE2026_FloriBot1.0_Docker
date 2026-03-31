@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python3-venv \
     git \
-    ros-jazzy-rmw-cyclonedds-cpp \
     && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m venv /opt/venv
@@ -27,4 +26,4 @@ RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["ros2", "run", "web_teleop", "webteleop_node"]
+CMD ["ros2", "run", "web_teleop", "web_teleop_server"]
