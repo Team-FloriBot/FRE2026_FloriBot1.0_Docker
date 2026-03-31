@@ -40,8 +40,8 @@ FRE2026_FloriBot1.0_Docker/
 git clone https://github.com/Team-FloriBot/FRE2026_FloriBot1.0_Docker.git
 cd FRE2026_FloriBot1.0_Docker
 
+### 2. Repositories klonen
 mkdir -p repos
-
 git clone https://github.com/Team-FloriBot/FloriBot1.0_ROS2_Jazzy_Base repos/FloriBot1.0_ROS2_Jazzy_Base
 git clone https://github.com/Team-FloriBot/Webteleop_ROS2_Jazzy_V1 repos/Webteleop_ROS2_Jazzy_V1
 
