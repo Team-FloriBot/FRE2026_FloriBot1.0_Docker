@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+
+  floribot-base:
+    build:
+      context: ..
+      dockerfile: base/Dockerfile
+    container_name: floribot-base
+
+    network_mode: host
+    ipc: host
+    pid: host
+
+    privileged: true
+
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
+      - ROS_LOCALHOST_ONLY=${ROS_LOCALHOST_ONLY}
+      - RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION}
+
+    volumes:
+      - /dev:/dev
+      - /dev/bus/usb:/dev/bus/usb
+      - /run/udev:/run/udev:ro
+
+    restart: unless-stopped
+
+
+  floribot-webteleop:
+    build:
+      context: ..
+      dockerfile: webteleop/Dockerfile
+    container_name: floribot-webteleop
+
+    network_mode: host
+    ipc: host
+    pid: host
+
+    depends_on:
+      - floribot-base
+
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
+      - ROS_LOCALHOST_ONLY=${ROS_LOCALHOST_ONLY}
+      - RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION}
+
+    restart: unless-stopped
