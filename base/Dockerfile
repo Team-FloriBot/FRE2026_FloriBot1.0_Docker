@@ -16,18 +16,17 @@ RUN apt-get update && apt-get install -y \
     libusb-1.0-0-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Legacy Phidget21 aus Source installieren
 WORKDIR /tmp
 
 RUN wget -O /tmp/phidget21.tar.gz \
-    https://www.phidgets.com/downloads/phidget21/libraries/linux/libphidget/Phidgetlinux_2.1.8.20130319.tar.gz && \
+    https://www.phidgets.com/downloads/phidget21/libraries/linux/libphidget/libphidget_2.1.8.20120514.tar.gz && \
     tar -xzf /tmp/phidget21.tar.gz -C /tmp && \
-    cd /tmp/libphidget-2.1.8.20130319 && \
+    cd /tmp/libphidget-2.1.8.20120514 && \
     ./configure --prefix=/usr && \
     make -j"$(nproc)" && \
     make install && \
     ldconfig && \
-    rm -rf /tmp/phidget21.tar.gz /tmp/libphidget-2.1.8.20130319
+    rm -rf /tmp/phidget21.tar.gz /tmp/libphidget-2.1.8.20120514
 
 WORKDIR /ws
 
