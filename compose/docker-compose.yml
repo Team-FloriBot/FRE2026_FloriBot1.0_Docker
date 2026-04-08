@@ -1,48 +1,70 @@
-version: "3.9"
-
 services:
-
   floribot-base:
+    profiles: ["core", "robot"]
     build:
       context: ..
       dockerfile: base/Dockerfile
     container_name: floribot-base
-
     network_mode: host
     ipc: host
     pid: host
-
     privileged: true
-
     environment:
-      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
-      - ROS_LOCALHOST_ONLY=${ROS_LOCALHOST_ONLY}
-      - RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION}
-
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
+      ROS_LOCALHOST_ONLY: ${ROS_LOCALHOST_ONLY}
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
     volumes:
       - /dev:/dev
       - /dev/bus/usb:/dev/bus/usb
       - /run/udev:/run/udev:ro
-
     restart: unless-stopped
 
-
   floribot-webteleop:
+    profiles: ["core", "ui"]
     build:
       context: ..
       dockerfile: webteleop/Dockerfile
     container_name: floribot-webteleop
-
     network_mode: host
     ipc: host
     pid: host
-
     depends_on:
       - floribot-base
-
     environment:
-      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
-      - ROS_LOCALHOST_ONLY=${ROS_LOCALHOST_ONLY}
-      - RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION}
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
+      ROS_LOCALHOST_ONLY: ${ROS_LOCALHOST_ONLY}
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+    restart: unless-stopped
 
+  floribot-stage:
+    profiles: ["sim", "stage"]
+    build:
+      context: ..
+      dockerfile: stage/Dockerfile
+    container_name: floribot-stage
+    network_mode: host
+    ipc: host
+    pid: host
+    environment:
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
+      ROS_LOCALHOST_ONLY: ${ROS_LOCALHOST_ONLY}
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+    restart: unless-stopped
+
+  floribot-gazebo:
+    profiles: ["sim", "gazebo"]
+    build:
+      context: ..
+      dockerfile: gazebo/Dockerfile
+    container_name: floribot-gazebo
+    network_mode: host
+    ipc: host
+    pid: host
+    environment:
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
+      ROS_LOCALHOST_ONLY: ${ROS_LOCALHOST_ONLY}
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+      DISPLAY: ${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
     restart: unless-stopped
