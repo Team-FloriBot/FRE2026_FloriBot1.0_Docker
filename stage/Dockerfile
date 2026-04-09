@@ -1,4 +1,4 @@
-FROM ros:jazzy-desktop
+FROM osrf/ros:jazzy-desktop
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y \
     libtool-bin \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
-    ros-jazzy-rviz2 \
     ros-jazzy-ackermann-msgs \
     ros-jazzy-rmw-cyclonedds-cpp \
     && rm -rf /var/lib/apt/lists/*
