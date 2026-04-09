@@ -64,7 +64,7 @@ cd compose
 docker compose up
 ```
 ### 6. Starten einzelnzer Profile
-| Profil               | Beschreibung          |
+| Service              | Beschreibung          |
 | -------------------- | --------------------- |
 | `floribot-base`      | Hardware + Kinematics |
 | `floribot-webteleop` | Webbasierte Steuerung |
