@@ -36,24 +36,24 @@ services:
       RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
     restart: unless-stopped
 
-floribot-stage:
-  profiles: ["sim", "stage"]
-  build:
-    context: ..
-    dockerfile: stage/Dockerfile
-  container_name: floribot-stage
-  network_mode: host
-  ipc: host
-  pid: host
-  environment:
-    ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
-    ROS_LOCALHOST_ONLY: ${ROS_LOCALHOST_ONLY}
-    RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
-    DISPLAY: ${DISPLAY}
-    QT_X11_NO_MITSHM: 1
-  volumes:
-    - /tmp/.X11-unix:/tmp/.X11-unix:rw
-  restart: unless-stopped
+  floribot-stage:
+    profiles: ["sim", "stage"]
+    build:
+      context: ..
+      dockerfile: stage/Dockerfile
+    container_name: floribot-stage
+    network_mode: host
+    ipc: host
+    pid: host
+    environment:
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
+      ROS_LOCALHOST_ONLY: ${ROS_LOCALHOST_ONLY}
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+      DISPLAY: ${DISPLAY}
+      QT_X11_NO_MITSHM: 1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    restart: unless-stopped
 
   floribot-gazebo:
     profiles: ["sim", "gazebo"]
