@@ -29,8 +29,8 @@ WORKDIR /ws
 RUN rosdep init || true
 RUN rosdep update
 
-# Nur noch ROS-Abhängigkeiten für stage_ros2 auflösen
-RUN rosdep install --from-paths /ws/src/stage_ros2 --ignore-src -r -y
+RUN rosdep install --from-paths /ws/src --ignore-src -r -y \
+    --skip-keys="stage marker_msgs ament_cmake_clang_format ament_cmake_pycodestyle"
 
 RUN . /opt/ros/jazzy/setup.sh && \
     colcon build --symlink-install
