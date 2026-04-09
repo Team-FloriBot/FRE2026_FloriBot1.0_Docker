@@ -6,6 +6,15 @@ RUN apt-get update && apt-get install -y \
     python3-colcon-common-extensions \
     python3-rosdep \
     git \
+    build-essential \
+    cmake \
+    pkg-config \
+    libfltk-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libtool \
+    libgl1-mesa-dev \
+    libglu1-mesa-dev \
     ros-jazzy-ackermann-msgs \
     ros-jazzy-rmw-cyclonedds-cpp \
     && rm -rf /var/lib/apt/lists/*
@@ -19,7 +28,8 @@ WORKDIR /ws
 
 RUN rosdep init || true
 RUN rosdep update
-RUN rosdep install --from-paths /ws/src/Stage --ignore-src -r -y
+
+# Nur noch ROS-Abhängigkeiten für stage_ros2 auflösen
 RUN rosdep install --from-paths /ws/src/stage_ros2 --ignore-src -r -y
 
 RUN . /opt/ros/jazzy/setup.sh && \
