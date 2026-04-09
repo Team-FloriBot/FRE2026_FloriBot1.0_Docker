@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /ws/src
 
-RUN git clone --branch jazzy https://github.com/tuw-robotics/Stage.git && \
-    git clone --branch jazzy https://github.com/tuw-robotics/stage_ros2.git
+RUN git clone --depth 1 --branch ros2 https://github.com/tuw-robotics/Stage.git && \
+    git clone --depth 1 --branch jazzy https://github.com/tuw-robotics/stage_ros2.git
 
 WORKDIR /ws
 
