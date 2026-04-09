@@ -14,7 +14,7 @@ Dieses Repository stellt eine modulare Docker-Infrastruktur für den FloriBot 1.
 - Unterstützung für:
   - Base (Kinematics + Hardware)
   - Webteleop
-  - Stage (Development)
+  - Stage (Simulation)
   - Gazebo (Simulation)
 - Docker Compose mit Profilen
 - Wiederverwendbare Build- und Startskripte
