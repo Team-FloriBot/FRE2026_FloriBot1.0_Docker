@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libtool \
+    libtool-bin \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
     ros-jazzy-ackermann-msgs \
@@ -29,8 +30,8 @@ WORKDIR /ws
 RUN rosdep init || true
 RUN rosdep update
 
-RUN rosdep install --from-paths /ws/src --ignore-src -r -y \
-    --skip-keys="stage marker_msgs ament_cmake_clang_format ament_cmake_pycodestyle"
+RUN apt-get update && rosdep install --from-paths /ws/src --ignore-src -r -y \
+    --skip-keys="stage ament_cmake_clang_format ament_cmake_pycodestyle"
 
 RUN . /opt/ros/jazzy/setup.sh && \
     colcon build --symlink-install
