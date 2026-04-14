@@ -74,12 +74,12 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     restart: unless-stopped
 
-  sensors:
+  floribot-sensors:
     profiles: ["core", "sensors"]
     build:
       context: ..
       dockerfile: sensors/Dockerfile
-    container_name: sensors
+    container_name: floribot-sensors
     network_mode: host
     ipc: host
     pid: host
