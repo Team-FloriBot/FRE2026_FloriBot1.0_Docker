@@ -33,7 +33,7 @@ RUN echo "source /opt/ros/jazzy/setup.bash" >> /root/.bashrc && \
     echo "source /opt/ros_ws/install/setup.bash" >> /root/.bashrc
 
 # Startscript
-COPY entrypoint.sh /entrypoint.sh
+COPY sensors/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
