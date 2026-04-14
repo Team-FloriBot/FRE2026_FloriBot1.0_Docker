@@ -36,7 +36,7 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
-    
+
   floribot-stage:
     profiles: ["sim", "stage"]
     build:
@@ -72,4 +72,26 @@ services:
       DISPLAY: ${DISPLAY}
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    restart: unless-stopped
+
+  sensors:
+    profiles: ["core", "sensors"]
+    build:
+      context: ..
+      dockerfile: sensors/Dockerfile
+    container_name: sensors
+    network_mode: host
+    ipc: host
+    pid: host
+    privileged: true
+    depends_on:
+      - floribot-base
+    environment:
+      ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
+      ROS_AUTOMATIC_DISCOVERY_RANGE: ${ROS_AUTOMATIC_DISCOVERY_RANGE}
+      RMW_IMPLEMENTATION: ${RMW_IMPLEMENTATION}
+    volumes:
+      - /dev:/dev
+      - /dev/bus/usb:/dev/bus/usb
+      - /run/udev:/run/udev:ro
     restart: unless-stopped
