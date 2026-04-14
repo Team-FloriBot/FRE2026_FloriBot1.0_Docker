@@ -38,7 +38,7 @@ services:
     restart: unless-stopped
 
   floribot-stage:
-    profiles: ["sim", "stage"]
+    profiles: ["stage"]
     build:
       context: ..
       dockerfile: stage/Dockerfile
@@ -57,7 +57,7 @@ services:
     restart: unless-stopped
 
   floribot-gazebo:
-    profiles: ["sim", "gazebo"]
+    profiles: ["gazebo"]
     build:
       context: ..
       dockerfile: gazebo/Dockerfile
